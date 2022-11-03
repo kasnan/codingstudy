@@ -11,12 +11,12 @@ int t, k, i;
 int dpf(int tx, int ty) {
     //여러개의 장을 동시에 할 때 메모리가 이용돼었는지 또는 기존에 연산된 부분이면 해당 값을 반환
     if (dp[tx][ty] != 0x3f3f3f3f){
-        printf("a: %d\n",dp[tx][ty]);
+        //printf("a: %d\n",dp[tx][ty]);
         return dp[tx][ty];
     }
  
     if (tx == ty){
-        printf("b\n");
+        //printf("b\n");
         return dp[tx][ty] = 0;
     }
  
@@ -40,7 +40,7 @@ int main() {
     while (t--) {
         //dp 배열을 전부 매우 큰 값(0x3f3f3f3f)으로 초기화
         memset(dp, 0x3f, sizeof(dp));
-        printf("%x\n",dp[0][0]);
+        
         scanf("%d", &k);
         for (i = 1; i <= k; ++i) {
             //각 장에서의 행의 개수 입력
