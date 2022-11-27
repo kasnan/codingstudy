@@ -16,12 +16,15 @@ int main(){
         scanf("%d",&strs[i]);
 
     int dp[n+1];
-    for(int i=0;i<=n;i++){
-        dp[i]=strs[i];        
-    }
+    dp[0]=0;
+    dp[1]=strs[1];
+    dp[2]=strs[2]+strs[1];
+    dp[3]=strs[3]+MAX(strs[1],strs[2]);
 
     //3이상부터는 그전 혹은 그전전 계단을 밟고 오르면 되는것
-    
+    for(int i=4;i<=n;i++){
+        dp[i]=MAX(strs[i-1],strs[i-2])+strs[i];
+    }
 
     printf("%d",dp[n]);
 }
