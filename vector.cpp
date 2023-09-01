@@ -32,6 +32,7 @@ int main(){
     vec1.back();
     vec1[0];
     vec1.at(3);
+    // cout << vec1.at(0) << "at1" << endl;
     vec1.begin();
     vec1.end();
     
