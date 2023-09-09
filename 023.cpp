@@ -3,7 +3,6 @@
 
 using namespace std;
 
-
 static vector<vector<int>> A;
 static vector<bool> C;
 
@@ -20,7 +19,6 @@ void DFS(int v){
 
 }
 
-
 int main(){
     int N,M;
     cin >> N >> M;
@@ -28,6 +26,7 @@ int main(){
     A.resize(N+1);
     C = vector<bool>(N+1,false);
 
+    // 그래프 각 노드에 대한 인접 노드 저장
     int u,v;
     for(int i=0;i<M;i++){
         cin >> u >> v;
@@ -37,6 +36,7 @@ int main(){
 
     int check=0;
 
+    // 방문하지 않은 노드임을 확인하고 DFS실행
     for(int i=1;i<N+1;i++){
         if(!C[i]){
             check++;

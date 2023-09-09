@@ -11,6 +11,8 @@ int N;
 
 int main(){
 
+    // 제일 큰 자리에 들어갈 수 있는 수는 2,3,5,7
+    // 그 다음으로 큰 자리부터는 홀수가 들어갈 수 있다.
     cin >> N;
     vector<int> start;
     start.push_back(2);    

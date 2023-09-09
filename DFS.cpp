@@ -11,14 +11,9 @@ typedef struct Node
     Node* right;
 } Node;
 
+static Node n[6];
 
-
-int main(){
-    Node n[6];
-    
-    stack<Node> s1;
-    vector<bool> v1(6,false);
-
+void initdata(){
     for(int i=0;i<6;i++){
         n[i].data=i;
     }
@@ -40,10 +35,23 @@ int main(){
 
     n[5].left=NULL;
     n[5].right=NULL;
+}
+
+
+int main(){
     
+    stack<Node> s1;
+    vector<bool> v1(6,false);
+
+    // 샘플데이터 준비
+    initdata();
+    
+    // 시작 데이터 지정
     int start=0;
     s1.push(n[start]);
     
+    // DFS 시작
+    // 스택에 값이 없을 때까지 반복 
     Node top;
     while(!s1.empty()){
         top=s1.top();
@@ -61,6 +69,4 @@ int main(){
         }
         
     }
-    
-
 }
