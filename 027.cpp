@@ -28,7 +28,7 @@ int main(){
     for(int i=0;i<N;i++){
         string col;
         cin >> col;
-        for(int j=0;j<col.length();j++){
+        for(int j=0;j<M;j++){
             A[i].push_back(col[j]-'0');
         }
     }
@@ -42,71 +42,33 @@ int main(){
 
 }
 
-bool up(Node n){
-    if(n.first-1 > 0 && A[n.first-1][n.second]!=0){
-        return true;
-    }
-    return false;
-}
-
-bool down(Node n){
-    if(n.first+1 < N && A[n.first+1][n.second]!=0){
-        return true;
-    }
-    return false;
-}
-
-bool left(Node n){
-    if(n.second-1 > 0 && A[n.first][n.second-1]!=0){
-        return true;
-    }
-    return false;
-}
-
-bool right(Node n){
-    if(n.second+1 <M && A[n.first][n.second+1]!=0){
-        return true;
-    }
-    return false;
-}
-
 void BFS(Node start){
-    queue<Node> q1;
-    int cnt=0;
+    int dx[] = {-1, 1, 0, 0};
+    int dy[] = {0, 0, -1, 1};
 
+    queue<Node> q1;
     q1.push(start);
-    ch[start.first][start.second]=false;
-    cnt++;
 
     //상하좌우 순서대로 스캔
     //방문했던 노드가 아니고 갈 수 있는 위치는 push
     while(!q1.empty()){
         Node front = q1.front();
         q1.pop();
+        ch[front.first][front.second]=true;
 
-        if(up(front) && !ch[front.first-1][front.second]){
-            A[front.first-1][front.second]+=1;
-            q1.push(make_pair(front.first-1,front.second));
-            ch[front.first-1][front.second]=true;
-        }
-        if(down(front) && !ch[front.first+1][front.second]){
-            A[front.first+1][front.second]+=1;
-            q1.push(make_pair(front.first+1,front.second));
-            ch[front.first+1][front.second]=true;
-        }
-        if(left(front) && !ch[front.first][front.second-1]){
-            A[front.first][front.second-1]+=1;
-            q1.push(make_pair(front.first,front.second-1));
-            ch[front.first][front.second-1]=true;
-        }
-        if(right(front) && !ch[front.first][front.second+1]){
-            A[front.first][front.second+1]+=1;
-            q1.push(make_pair(front.first,front.second+1));
-            ch[front.first][front.second+1]=true;
-        }
+        for(int i=0;i<4;i++){
+            int x = front.first + dx[i];
+            int y = front.second + dy[i];
 
-
-
+            if(-1<x<N && -1<y<M){
+                // seg fault 에러 내일 풀고 정리하자
+                if(A[x][y] != 0 && ch[x][y] == false){
+                    ch[x][y]=true;
+                    A[x][y]=A[front.first][front.second]+1;
+                    q1.push(make_pair(x,y));
+                }
+            }
+        }
     }
 
 }
