@@ -46,8 +46,11 @@ void BFS(Node start){
     int dx[] = {-1, 1, 0, 0};
     int dy[] = {0, 0, -1, 1};
 
+    int x,y;
+
     queue<Node> q1;
     q1.push(start);
+    ch[start.first][start.second]=true;
 
     //상하좌우 순서대로 스캔
     //방문했던 노드가 아니고 갈 수 있는 위치는 push
@@ -57,10 +60,10 @@ void BFS(Node start){
         ch[front.first][front.second]=true;
 
         for(int i=0;i<4;i++){
-            int x = front.first + dx[i];
-            int y = front.second + dy[i];
+            x = front.first + dx[i];
+            y = front.second + dy[i];
 
-            if(-1<x<N && -1<y<M){
+            if(-1<x && x<N && -1<y && y<M){
                 // seg fault 에러 내일 풀고 정리하자
                 if(A[x][y] != 0 && ch[x][y] == false){
                     ch[x][y]=true;
