@@ -5,12 +5,20 @@
 
 using namespace std;
 
+// 구조체 안에 bool형 연산 함수 작성하기
+struct cmp {
+  bool operator()(int a, int b) {
+    return a > b;
+  }
+};
+
 int main(){
     int N;
     cin >> N;
 
     // vector<int>A(N+1,0);
     priority_queue<int,vector<int>,greater<int>> pq1;
+    // priority_queue<int,vector<int>,cmp> pq1;
 
     for(int i=0;i<N;i++){
         int tmp;
