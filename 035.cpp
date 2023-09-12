@@ -25,7 +25,7 @@ int main(){
 
     int clr=1;
     meet now=conf[0];
-    for(int i=0;i<N;i++){
+    for(int i=1;i<N;i++){
         // 현재 진행되는 회의의 종료 시간이 다음 시작시간보다 작은 경우
         if(now.first<=conf[i].second){
             clr++;
