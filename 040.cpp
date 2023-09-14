@@ -8,7 +8,7 @@ int main(){
     long min,max;
     cin >> min >> max;
 
-    vector<bool>ch(max-min+1);
+    vector<bool>ch(max-min+1,false);
     int cnt=0;
 
     // max 이하의 제곱수의 배수를 체크한다.

@@ -16,10 +16,7 @@ int main(){
     cin >> T;
     for(int i=0;i<T;i++){
         cin >> A >> B;
-        int n1,n2;
-        n1=max(A,B);
-        n2=min(A,B);
-        lcm = A*B/getgcd(n1,n2);
+        lcm = A*B/getgcd(A, B);
         ans.push_back(lcm);
     }
 

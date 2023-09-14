@@ -11,7 +11,7 @@ int main(){
     int N;
     cin >> N;
 
-    vector<long>P(10000001,0);
+    vector<int>P(10000001,0);
     for(int i=2;i<10000001;i++){
         P[i]=i;
     }

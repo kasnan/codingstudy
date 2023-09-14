@@ -22,12 +22,15 @@ int main(){
     ch=vector<bool>(10,false);
 
     lcm=1;
+    // 그래프 저장
     for(int i=0;i<N-1;i++){
         int a,b,p,q;
         cin >> a >> b >> p >> q;
         A[a].push_back(Node(b,ratio(p,q)));
         A[b].push_back(Node(a,ratio(q,p)));
 
+        // 입력받은 모든 비율에 대해 최소공배수를 구하기
+        // 곱하는 것은 이후 최대공약수를 구해서 처리
         lcm*=(p*q/getgcd(p,q));
     }
 
