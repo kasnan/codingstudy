@@ -53,7 +53,7 @@ long getgcd(long n1,long n2){
         return n1;
     }
     else{
-        getgcd(n2,n1%n2);
+        return getgcd(n2,n1%n2);
     }
 }
 

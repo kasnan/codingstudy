@@ -9,7 +9,7 @@ int main(){
 
     result=n;
 
-    for(int i=2;i<sqrt(n);i++){
+    for(long i=2;i<sqrt(n)+1;i++){
         if(n%i==0){
             result=result-result/i;
             // 소인수 성분에 대해서 제거

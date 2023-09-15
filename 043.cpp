@@ -2,25 +2,25 @@
 
 using namespace std;
 
-int getgcd(int n1,int n2);
+long getgcd(long n1,long n2);
 
 int main(){
-    int alen,blen;
+    long alen,blen;
     cin >> alen >> blen;
 
-    int gcd=getgcd(alen,blen);
+    long gcd=getgcd(alen,blen);
 
-    for(int i=0;i<gcd;i++){
+    for(long i=0;i<gcd;i++){
         cout << 1;
     }
 
 }
 
-int getgcd(int n1,int n2){
+long getgcd(long n1,long n2){
     if(n2==0){
         return n1;
     }
     else{
-        getgcd(n2,n1%n2);
+        return getgcd(n2,n1%n2);
     }
 }
