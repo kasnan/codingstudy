@@ -44,8 +44,6 @@ int main(){
         q1.pop();
 
         int now = current.second;
-        int now_d = current.first;
-
         if(visit[now]){
             continue;
         }
