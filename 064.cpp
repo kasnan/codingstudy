@@ -16,7 +16,6 @@ vector<int> D;
 
 int findF(int n);
 void unionF(int a,int b);
-bool checkF(int a,int b);
 
 int main(){
     int v,e;
@@ -39,10 +38,7 @@ int main(){
         edge now = edges.top();
         edges.pop();
 
-        if(checkF(now.s,now.e)){
-            continue;
-        }
-        else{
+        if(findF(now.s)!=findF(now.e)){
             unionF(now.s,now.e);
             treecnt+=now.v;
             cntedge++;
@@ -57,26 +53,14 @@ int findF(int n){
         return n;
     }
     else{
-        return D[n]==findF(D[n]);
+        return D[n]=findF(D[n]);
     }
 }
 
 void unionF(int a,int b){
     a=findF(a);
     b=findF(b);
-    if(a>b){
+    if(a!=b){
         D[b]=a;
     }
-    else{
-        D[a]=b;
-    }
-}
-
-bool checkF(int a,int b){
-    a=findF(a);
-    b=findF(b);
-    if(a==b){
-        return true;
-    }
-    return false;
 }
