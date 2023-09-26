@@ -3,11 +3,6 @@
 using namespace std;
 
 int main(){
-    int N;
-    cin >> N;
-
-    int k=log2(N);
-    if(pow(2,k)<N)
-        k++;
-    cout << k;
+    int n=5/2*2;
+    cout << n <<endl;
 }
