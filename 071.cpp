@@ -35,7 +35,7 @@ int main(){
     
     // 입력된 데이터 상위 노드들 데이터 연산
     // 구간 합이니 두 자식 노드의 합이 부모 노드의 값
-    setTree(treeSize-1);
+    setTree(treeSize);
 
     for(int i=0;i<m+k;i++){
         long a,b,c;
@@ -56,6 +56,7 @@ int main(){
 
 void setTree(int i){
     while(i!=1){
+        // 맨 끝 인덱스부터 1씩 감소하면서 각 부모 노드에 값 더해준다
         segtree[i/2]+=segtree[i];
         i--;
     }
