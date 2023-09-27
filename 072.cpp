@@ -33,7 +33,7 @@ int main(){
     for(int i=startIndex+1;i<startIndex+n+1;i++){
         cin >> segtree[i];
     }
-    setTree(treeSize-1);
+    setTree(treeSize);
 
     for(int i=0;i<m;i++){
         long a,b;
