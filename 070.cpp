@@ -41,6 +41,7 @@ int main(){
 }
 
 void pretrav(int r){
+    // 전위 순회 : root - left child - right child
     cout << char(r+'A');
     if(tree[r][0]!=-1){
         pretrav(tree[r][0]);
@@ -50,6 +51,7 @@ void pretrav(int r){
     }
 }
 void intrav(int r){
+    // 중위 순회 : left child - root - right child
     if(tree[r][0]!=-1){
         intrav(tree[r][0]);
     }
@@ -60,6 +62,7 @@ void intrav(int r){
 }
 
 void posttrav(int r){
+    // 후위 순회 : left child - right child - root
     if(tree[r][0]!=-1){
         posttrav(tree[r][0]);
     }
