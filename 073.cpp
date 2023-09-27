@@ -36,7 +36,7 @@ int main(){
     for(int i=startIdx+1;i<n+startIdx+1;i++){
         cin >> Tree[i];
     }
-    setTree(treesize-1);
+    setTree(treesize);
 
     for(int i=0;i<m+k;i++){
         long a,b,c;
