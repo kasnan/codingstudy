@@ -1,11 +1,12 @@
 #include<iostream>
 #include<climits>
+#include<vector>
 using namespace std;
 
-long D[501][501];
-pair<int,int> M[501];
+long D[502][502];
+vector<pair<int,int>> M;
 
-long exec(int s,int e);
+int exec(int s,int e);
 int main(){
     for(int i=0;i<501;i++){
         for(int j=0;j<501;j++){
@@ -15,16 +16,18 @@ int main(){
 
     int n;
     cin >> n;
+    M.resize(n+1);
     for(int i=1;i<n+1;i++){
-        cin >> M[i].first >> M[i].second;
+        int r,c;
+        cin >> r >> c;
+        M[i] = make_pair(r,c);
     }
 
-    long res=exec(1,n);
-    cout << res << endl;
+    cout << exec(1,n) << endl;
 }
 
-long exec(int s,int e){
-    long res=INT_MAX;
+int exec(int s,int e){
+    int res=INT_MAX;
     if(D[s][e]!=-1){
         return D[s][e];
     }
@@ -34,10 +37,8 @@ long exec(int s,int e){
     else if(e==s+1){
         return M[s].first*M[e].first*M[e].second;
     }
-    else{
-        for(int i=s;i<e+1;i++){
-            res=min(res,M[s].first*M[i].second*M[e].second+exec(s,i)+exec(i+1,e));
-        }
+    for(int i=s;i<e;i++){
+        res=min(res,M[s].first*M[i].second*M[e].second+exec(s,i)+exec(i+1,e));
     }
 
     return D[s][e]=res;
