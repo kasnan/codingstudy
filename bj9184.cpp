@@ -1,36 +1,44 @@
-#include<iostream>
-#include<tuple>
+#include <iostream>
 
-using namespace std;
-int D[101][101][101];
+int store[21][21][21];
 
-int main(){
-    int a,b,c;
+int solve(int a, int b, int c);
 
-    for(int i=0;i<101;i++){
-        for(int j=0;j<101;j++){
-            for(int k=0;k<101;k++){
-                if(i<=50 || j<=50 || k<=50){
-                    D[i][j][k]=1;
-                }
-                else if(i>70 || j>70 || k>70){
-                    D[i][j][k]=D[70][70][70];
-                }
-                else if(i<j<k){
-                    D[i][j][k]=D[i][j][k-1]+D[i][j-1][k-1]-D[i][j-1][k];
-                }
-                else{
-                    D[i][j][k]=D[i-1][j][k]+D[i-1][j-1][k]+D[i-1][j][k-1]-D[i-1][j-1][k-1];
-                }
-            }
-        }
-    }
+int main(void)
+{
+	std::ios::sync_with_stdio(false);
+	std::cin.tie(NULL);
+	std::cout.tie(NULL);
 
-    while(true){
-        cin >> a >> b >> c;
-        if(a==-1 && b==-1 && c==-1){
-            break;
-        }
-        cout << "w(" <<a<<","<<b<<","<<c<<") = "<<D[a+50][b+50][c+50] << "\n";
-    }
+	int a, b, c;
+	while (true)
+	{
+		std::cin >> a >> b >> c;
+		
+		if (a == -1 && b == -1 && c == -1)
+			break;
+
+		std::cout << "w(" << a << ", " << b << ", " << c << ") = " << solve(a, b, c) << '\n';
+	}
+}
+
+int solve(int a, int b, int c)
+{
+	if (a <= 0 || b <= 0 || c <= 0)
+		return 1;
+
+	if (a > 20 || b > 20 || c > 20)
+		return solve(20, 20, 20);
+
+	if (store[a][b][c])
+		return store[a][b][c];
+
+	if (a < b && b < c)
+	{
+		store[a][b][c] = solve(a, b, c - 1) + solve(a, b - 1, c - 1) - solve(a, b - 1, c);
+		return store[a][b][c];
+	}
+
+	store[a][b][c] = solve(a - 1, b, c) + solve(a - 1, b - 1, c) + solve(a - 1, b, c - 1) - solve(a - 1, b - 1, c - 1);
+	return store[a][b][c];
 }
