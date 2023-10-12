@@ -1,6 +1,6 @@
 #include <iostream>
 
-int store[21][21][21];
+int D[21][21][21];
 
 int solve(int a, int b, int c);
 
@@ -30,15 +30,15 @@ int solve(int a, int b, int c)
 	if (a > 20 || b > 20 || c > 20)
 		return solve(20, 20, 20);
 
-	if (store[a][b][c])
-		return store[a][b][c];
+	if (D[a][b][c])
+		return D[a][b][c];
 
 	if (a < b && b < c)
 	{
-		store[a][b][c] = solve(a, b, c - 1) + solve(a, b - 1, c - 1) - solve(a, b - 1, c);
-		return store[a][b][c];
+		D[a][b][c] = solve(a, b, c - 1) + solve(a, b - 1, c - 1) - solve(a, b - 1, c);
+		return D[a][b][c];
 	}
 
-	store[a][b][c] = solve(a - 1, b, c) + solve(a - 1, b - 1, c) + solve(a - 1, b, c - 1) - solve(a - 1, b - 1, c - 1);
-	return store[a][b][c];
+	D[a][b][c] = solve(a - 1, b, c) + solve(a - 1, b - 1, c) + solve(a - 1, b, c - 1) - solve(a - 1, b - 1, c - 1);
+	return D[a][b][c];
 }
