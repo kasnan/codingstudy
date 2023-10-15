@@ -24,10 +24,9 @@ void tomatoBFS()
         int xx = q.front().x;
         int yy = q.front().y;
         int zz = q.front().z;
-
         q.pop();
 
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 6; i++)
         {
             int nx = xx + dx[i];
             int ny = yy + dy[i];
@@ -35,9 +34,9 @@ void tomatoBFS()
 
             if (nx >= 0 && ny >= 0 && nz >= 0 && nx < M && ny < N && nz < H)
             {
-                if (BOX[nx][ny][nz] == 0)
+                if (BOX[nz][ny][nx] == 0)
                 {
-                    BOX[nx][ny][nz] = BOX[xx][yy][zz] + 1;
+                    BOX[nz][ny][nx] = BOX[zz][yy][xx] + 1;
                     q.push({nz, ny, nx});
                 }
             }
@@ -47,17 +46,17 @@ void tomatoBFS()
 
 void tomato()
 {
-    for (int i = 0; i < H; i++)
+    for (int z = 0; z < H; z++)
     {
-        for (int j = 0; j < N; j++)
+        for (int y = 0; y < N; y++)
         {
-            for (int k = 0; k < M; k++)
+            for (int x = 0; x < M; x++)
             {
-                cin >> BOX[i][j][k];
+                cin >> BOX[z][y][x];
 
-                if (BOX[i][j][k] == 1)
+                if (BOX[z][y][x] == 1)
                 {
-                    q.push({i, j, k});
+                    q.push({z, y, x});
                 }
             }
         }
@@ -69,18 +68,18 @@ int main()
     tomato();
     tomatoBFS();
 
-    for (int i = 0; i < H; i++)
+    for (int z = 0; z < H; z++)
     {
-        for (int j = 0; j < N; j++)
+        for (int y = 0; y < N; y++)
         {
-            for (int k = 0; k < M; k++)
+            for (int x = 0; x < M; x++)
             {
-                if (BOX[i][j][k] == 0)
+                if (BOX[z][y][x] == 0)
                 {
                     cout << -1 << "\n";
                     return 0;
                 }
-                ans = max(ans, BOX[i][j][k]);
+                ans = max(ans, BOX[z][y][x]);
             }
         }
     }
