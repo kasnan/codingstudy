@@ -1,22 +1,23 @@
 #include<iostream>
-#define MAX 100000
+#define MAX 100001
 using namespace std;
 
-int n;
-
+int T,n;
+int A[MAX][2];
+int D[MAX][3];
 
 int main(){
-    int T;
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    
     cin >> T;
-
-    int A[2][MAX];
-    int D[MAX][3];
 
     for(int t=0;t<T;t++){
         cin >> n;
         for(int i=0;i<2;i++){
             for(int j=0;j<n;j++){
-                cin >> A[i][j];
+                cin >> A[j][i];
             }
         }
 
@@ -30,7 +31,7 @@ int main(){
             D[i][2]=max(D[i-1][0],D[i-1][1]);
         }
 
-        int maxV=0;
+        int maxV=-1;
         for(int i=0;i<3;i++){
             maxV=max(maxV,D[n-1][i]);
         }
