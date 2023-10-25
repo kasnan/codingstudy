@@ -27,6 +27,7 @@ void BFS(int s){
 
         if(n==k){
             cout << cnt;
+            break;
         }
 
         q1.pop();
