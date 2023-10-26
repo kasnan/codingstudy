@@ -6,7 +6,7 @@ using namespace std;
 int n,m;
 vector<int> Inum,res;
 bool chk[10001];
-void Solution(int cnt){
+void Solution(int cnt,int start){
     if(cnt==m){
         for(int i=0;i<m;i++){
             cout << res[i] << " ";
@@ -15,15 +15,14 @@ void Solution(int cnt){
         return;
     }
     int xx=-1;
-    for(int i=0;i<Inum.size();i++){
+    for(int i=start;i<Inum.size();i++){
         res[cnt]=Inum[i];
-        Solution(cnt+1);
-
+        Solution(cnt+1,i);
     }
 }
 
 void Solve(){
-    Solution(0);
+    Solution(0,0);
     return;
 }
 
