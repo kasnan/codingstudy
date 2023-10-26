@@ -4,9 +4,9 @@
 using namespace std;
 
 int n,m;
-int Inum[8],res[8];
-bool chk[8];
-void Solution(int cnt,int start){
+vector<int> Inum,res;
+bool chk[10001];
+void Solution(int cnt){
     if(cnt==m){
         for(int i=0;i<m;i++){
             cout << res[i] << " ";
@@ -15,28 +15,30 @@ void Solution(int cnt,int start){
         return;
     }
     int xx=-1;
-    for(int i=start;i<n;i++){
-        if(!chk[i] && Inum[i]!=xx){
-            res[cnt]=Inum[i];
-            xx=res[cnt];
-            chk[i]=true;
-            Solution(cnt+1,i);
-            chk[i]=false;
-        }
+    for(int i=0;i<Inum.size();i++){
+        res[cnt]=Inum[i];
+        Solution(cnt+1);
     }
 }
 
 void Solve(){
-    Solution(0,0);
+    Solution(0);
     return;
 }
 
 int main(){
     cin >> n >> m;
-    for(int i=0;i<n;i++){
-        cin >> Inum[i];
-    }
-    sort(Inum,Inum+n);
 
+    // 중복되는 수는 제거
+    for(int i=0;i<n;i++){
+        int tmp;
+        cin >> tmp;
+        if(!chk[tmp]){
+            Inum.push_back(tmp);
+            chk[tmp]=true;
+        }
+    }
+    sort(Inum.begin(),Inum.end());
+    res.resize(m);
     Solve();
 }
